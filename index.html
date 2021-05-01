@@ -5,18 +5,28 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <style>
-        .tofu-container {
-            height: 270px;
-            width: 480px;
-            margin: -4px auto 0 auto;
+        /* This is an HTML element that controls how the picture is centered and cropped */
+        .container {
+            /* Dimensions of the picture */
+            width: 464px; 
+            height: 260px;
+
+            /* Make container visible */
+            border: 5px solid black;
+
+            /* Crops the rest of the picture */
             overflow: hidden;
-            border: 5px solid #c4b3f8;
-            box-shadow: inset 1px 1px 0 0px #9d90c5;
+            
+            /* Center the picture */
+            margin: -4px auto 0 auto;
         }
     </style>
+    <script>
+
+    </script>
     <body>
         <div class="container">
-            <img src="picture.jpg">
+            <img src="picture.jpg" style="">
         </div>
     </body>
 </html>
