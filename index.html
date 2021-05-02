@@ -66,14 +66,15 @@
             // Function runs whenever finger moves on top or the side of image
             // For mobile users
             $("body").bind('touchmove', function(e) {
-                var touch = e.targetTouches[event.targetTouches.length-1];
-                x = touch.pageX;
-
                 // Total number of pictures
                 var pictureTotal = 121;
 
                 // Index of the last picture
                 var lastIndex = pictureTotal - 1;
+                
+                // Find the position of the finger
+                var touch = e.targetTouches[event.targetTouches.length-1];
+                x = touch.pageX;
                 
                 // Set speed of animation (optional)
                 var multiplier = 1;
