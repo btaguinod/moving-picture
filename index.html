@@ -3,30 +3,60 @@
     <head>
         <title>Responsive Picture Example</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            /* This is an HTML element that controls how the picture is centered and cropped */
+            .container {
+                /* Dimensions of the picture */
+                width: 480px; 
+                height: 480px;
+    
+                /* Make container visible */
+                border: 5px solid black;
+    
+                /* Crops the rest of the picture */
+                overflow: hidden;
+                
+                /* Center the picture */
+                margin: -4px auto 0 auto;
+            }
+        </style>
     </head>
-    <style>
-        /* This is an HTML element that controls how the picture is centered and cropped */
-        .container {
-            /* Dimensions of the picture */
-            width: 464px; 
-            height: 260px;
-
-            /* Make container visible */
-            border: 5px solid black;
-
-            /* Crops the rest of the picture */
-            overflow: hidden;
-            
-            /* Center the picture */
-            margin: -4px auto 0 auto;
-        }
-    </style>
-    <script>
-
-    </script>
+    
     <body>
         <div class="container">
-            <img src="picture.jpg" style="">
+            <!-- SOURCE: https://giphy.com/gifs/loxsazyaYJ1E65n0up -->
+            <img src="picture.jpg" style="position: relative;">
         </div>
+
+        <script>
+            $(".container").mousemove(function(event) {
+                // Total number of pictures
+                var pictureTotal = 121;
+
+                // Index of the last picture
+                var lastIndex = pictureTotal - 1;
+
+                // Find the position of the mouse
+                var offset = $(this).offset();
+                x = event.pageX- offset.left;
+                
+                // Set speed of animation (optional)
+                var multiplier = 1;
+
+                // Calculate the x-position of mouse from 0% - 100%
+                var xPercent = (x)/490 * multiplier;
+                
+                // Calculate the index of the frame to show. 
+                // The "% pictureTotal" loops the index back to 0 when it goes over the last index
+                var frameNum = Math.round(xPercent*lastIndex) % pictureTotal;
+                
+                // Calculate pixels to offset from the left
+                var xRounding = frameNum*480;
+                
+                // Apply offset to picture
+                $("img").css('left', '-'+xRounding+'px');
+                console.log(frameNum)
+            });
+        </script>
     </body>
 </html>
