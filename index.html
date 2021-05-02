@@ -2,6 +2,8 @@
 <html>
     <head>
         <title>Responsive Picture Example</title>
+
+        <!-- Import jquery libarary from the internet so the javascript code below is more concise -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
             /* This is an HTML element that controls how the picture is centered and cropped */
@@ -21,14 +23,13 @@
             }
         </style>
     </head>
-    
     <body>
         <div class="container">
             <!-- SOURCE: https://giphy.com/gifs/loxsazyaYJ1E65n0up -->
             <img src="picture.jpg" style="position: relative;">
         </div>
-
         <script>
+            // Function runs whenever mouse moves on top of the image
             $(".container").mousemove(function(event) {
                 // Total number of pictures
                 var pictureTotal = 121;
