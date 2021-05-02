@@ -5,6 +5,8 @@
 
         <!-- Import jquery libarary from the internet so the javascript code below is more concise -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- CSS code -->
         <style>
             /* This is an HTML element that controls how the picture is centered and cropped */
             .container {
@@ -24,13 +26,46 @@
         </style>
     </head>
     <body>
+
         <div class="container">
             <!-- SOURCE: https://giphy.com/gifs/loxsazyaYJ1E65n0up -->
             <img src="picture.jpg" style="position: relative;">
         </div>
+
+        <!-- Javascript Code -->
         <script>
             // Function runs whenever mouse moves on top of the image
             $(".container").mousemove(function(event) {
+                // Total number of pictures
+                var pictureTotal = 121;
+
+                // Index of the last picture
+                var lastIndex = pictureTotal - 1;
+
+                // Find the position of the mouse
+                var offset = $(this).offset();
+                x = event.pageX- offset.left;
+                
+                // Set speed of animation (optional)
+                var multiplier = 1;
+
+                // Calculate the x-position of mouse from 0% - 100%
+                var xPercent = (x)/490 * multiplier;
+                
+                // Calculate the index of the frame to show. 
+                // The "% pictureTotal" loops the index back to 0 when it goes over the last index
+                var frameNum = Math.round(xPercent*lastIndex) % pictureTotal;
+                
+                // Calculate pixels to offset from the left
+                var xRounding = frameNum*480;
+                
+                // Apply offset to picture
+                $("img").css('left', '-'+xRounding+'px');
+                console.log(frameNum)
+            });
+
+            // Function runs whenever finger moves on top of the image
+            $(".container").touchmove(function(event) {
                 // Total number of pictures
                 var pictureTotal = 121;
 
